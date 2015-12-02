@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+							http://www.springframework.org/schema/aop 
+							http://www.springframework.org/schema/aop/spring-aop-2.0.xsd 
+							http://www.springframework.org/schema/tx 
+						    http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean id="myDataSourceCadAdm" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> 
+		<property name="driverClass" value="org.postgresql.Driver"/>
+		<property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/estatistica"/>
+		<property name="user" value="postgres"/>
+		<property name="password" value="123"/>		
+		<property name="maxStatements" value="50"/>
+    	<property name="maxIdleTime" value="1800"/>
+    	<property name="maxPoolSize" value="100"/>
+    	<property name="minPoolSize" value="5"/>
+    	<property name="initialPoolSize" value="5"/>
+   		<property name="acquireIncrement" value="5"/>
+    	<property name="maxIdleTimeExcessConnections" value="300"/>
+    	<property name="unreturnedConnectionTimeout" value="1800"/>
+	</bean>	
+	
+	<bean id="sessionFactoryCadAdm"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="myDataSourceCadAdm" />
+		<property name="packagesToScan">
+            <list>
+                <value>br.com.estatistica.common.entity</value>
+            </list>
+        </property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>				
+				<prop key="transaction.auto_close_session">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryCadAdm" />
+	</bean>
+	
+	<!-- CONFIGURAÇÕES REFERENTES manterUsuario -->
+	<bean id="usuarioCadAdmDAO" class="br.com.estatistica.persistence.hibernate.UsuarioCadAdmDAO">
+		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
+	</bean>	
+	<bean id="manterUsuarioCadAdmService" class="br.com.estatistica.business.service.ManterUsuarioCadAdmServiceImpl">
+		<property name="usuarioCadAdmDAO" ref="usuarioCadAdmDAO" />			
+	</bean>	
+	<bean id="manterUsuarioMB" class="br.com.estatistica.presentation.ManterUsuarioMB" scope="request">	
+		<property name="manterUsuarioCadAdmService" ref="manterUsuarioCadAdmService" />
+	</bean>	
+	
+	<!-- CONFIGURAÇÕES REFERENTES manterSistema -->
+	<bean id="sistemaDAO" class="br.com.estatistica.persistence.hibernate.SistemaDAO">
+		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
+	</bean>	
+	<bean id="manterSistemaService" class="br.com.estatistica.business.service.ManterSistemaServiceImpl">
+		<property name="sistemaDAO" ref="sistemaDAO" />			
+	</bean>	
+	<bean id="manterSistemaMB" class="br.com.estatistica.presentation.ManterSistemaMB" scope="request">	
+		<property name="manterSistemaService" ref="manterSistemaService" />
+	</bean>	
+	
+	<!-- CONFIGURAÇÕES REFERENTES manterPerfil -->
+	<bean id="perfilDAO" class="br.com.estatistica.persistence.hibernate.PerfilDAO">
+		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
+	</bean>	
+	<bean id="manterPerfilService" class="br.com.estatistica.business.service.ManterPerfilServiceImpl">
+		<property name="perfilDAO" ref="perfilDAO" />	
+		<property name="sistemaDAO" ref="sistemaDAO" />
+	</bean>	
+	<bean id="manterPerfilMB" class="br.com.estatistica.presentation.ManterPerfilMB" scope="request">	
+		<property name="manterPerfilService" ref="manterPerfilService" />
+	</bean>	
+	
+	<tx:annotation-driven />
+
+</beans>

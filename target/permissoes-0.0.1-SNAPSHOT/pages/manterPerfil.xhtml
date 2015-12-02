@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+  	<title>:: TRE-BA - PERMISSÕES ::</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="website description" />
+  	<meta name="keywords" content="website keywords, website keywords" />
+	<link rel="stylesheet" href="${facesContext.externalContext.request.contextPath}/css/style.css" type="text/css" charset="utf-8" />	
+ 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+ 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  
+</h:head>
+
+<h:form id="form1">
+
+<body id="body_1">
+   
+	<div id="main">
+    <div id="header">
+      <div id="logo">
+        <img src="${facesContext.externalContext.request.contextPath}/images/brasao_md.png"/>
+        <div class="slogan">Acesso Cliente</div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterSistema.xhtml">Sistema</a></li>
+          <li class="current"><a href="${facesContext.externalContext.request.contextPath}/pages/manterPerfil.xhtml">Perfil</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterUsuario.xhtml">Usuário</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/another_page.html">Perfil x Usuario</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/contact.html">Administração</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Cadastro de Perfis</h1>
+        
+			<ul>
+				<li><h:outputLabel value="Sistema"/></li>
+				<li>
+					<p:selectOneMenu id="idSistema" value="#{manterPerfilMB.perfil.idSistema}">  
+			        	<f:selectItem itemLabel="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" itemValue="-1" />
+			        	<f:selectItems 	var="obj" 
+			   							value="#{manterPerfilMB.listaSistemas}"
+			  							itemLabel="#{obj.nome}&nbsp;&nbsp;&nbsp;"
+			   							itemValue="#{obj.id}" />  
+		        		<p:ajax update="lista" event="change" listener="#{manterPerfilMB.atualizaPerfis}"/>
+		        	</p:selectOneMenu>  
+				</li>
+			</ul> 
+			<ul>
+				<li><h:outputLabel value="Nome do Perfil"/></li>
+				<li><p:inputText id="nome" value="#{manterPerfilMB.perfil.descricao}" size="30"/>
+					<p:commandButton value="Gravar" action="#{manterPerfilMB.salvar}" update="lista"/>
+				</li>
+			</ul>
+
+        	<hr />
+        
+       		 <p:dataTable id="lista" var="lista" value="#{manterPerfilMB.listaPerfis}">
+			    <p:column headerText="Id">
+			        <h:outputText value="#{lista.id}" />
+			    </p:column>
+				 
+			    <p:column headerText="Descrição">
+			        <h:outputText value="#{lista.descricao}" />
+			    </p:column>
+
+			</p:dataTable>
+        
+        </div>
+        
+    </div>
+    <div id="footer">
+      <p>Copyright &copy; TRE-BA - Tribunal Regional Eleitoral da Bahia</p>
+    </div>
+  </div>	
+		   
+</body>
+</h:form>
+</html>	

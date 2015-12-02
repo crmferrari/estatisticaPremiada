@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+  	<title>:: TRE-BA - PERMISSÕES ::</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="website description" />
+  	<meta name="keywords" content="website keywords, website keywords" />
+	<link rel="stylesheet" href="${facesContext.externalContext.request.contextPath}/css/style.css" type="text/css" charset="utf-8" />	
+ 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+ 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  
+</h:head>
+
+<h:form id="form1">
+
+<body id="body_1">
+   
+	<div id="main">
+    <div id="header">
+      <div id="logo">
+        <img src="${facesContext.externalContext.request.contextPath}/images/brasao_md.png"/>
+        <div class="slogan">Acesso Cliente</div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="${facesContext.externalContext.request.contextPath}/pages/manterSistema.xhtml">Sistema</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterPerfil.xhtml">Perfil</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterUsuario.xhtml">Usuário</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/another_page.html">Perfil x Usuario</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/contact.html">Administração</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Cadastro de Sistemas</h1>
+        
+        	<ul>
+				<li><h:outputLabel value="Nome"/></li>
+				<li><p:inputText id="nome" value="#{manterSistemaMB.sistema.nome}" size="30" title="Nome do sistema a ser controlado pelo Acesso Cliente"/></li>
+				<p:tooltip id="toolTipNome" for="nome" showEvent="focus" hideEvent="blur" />
+			</ul>
+        	<ul>
+				<li><h:outputLabel value="Descrição"/></li>
+				<li><p:inputText id="descricao" value="#{manterSistemaMB.sistema.descricao}" size="100" title="Breve descrição do sistema"/></li>
+				<p:tooltip id="toolTipDescricao" for="descricao" showEvent="focus" hideEvent="blur" />
+			</ul>
+        	<ul>
+				<li><h:outputLabel value="Chave de Acesso"/></li>
+				<li><p:inputText id="chave" value="#{manterSistemaMB.sistema.chaveAcesso}" size="10" title="A chave de acesso é a 'senha' que autentica o sistema desenvolvido no Acesso Cliente."/></li>
+				<p:tooltip id="toolTipChave" for="chave" showEvent="focus" hideEvent="blur" />
+			</ul> 
+			<ul>
+				<p:commandButton value="Gravar" action="#{manterSistemaMB.salvar}" update="lista"/>
+        	</ul>
+        	
+        	<hr />
+        
+        	<p:dataTable id="lista" var="lista" value="#{manterSistemaMB.listaSistemas}">
+			    <p:column headerText="Id">
+			        <h:outputText value="#{lista.id}" />
+			    </p:column>
+			 
+			    <p:column headerText="Nome">
+			        <h:outputText value="#{lista.nome}" />
+			    </p:column>
+			 
+			    <p:column headerText="Descrição">
+			        <h:outputText value="#{lista.descricao}" />
+			    </p:column>
+			 
+			    <p:column headerText="Chave de Acesso">
+			        <h:outputText value="#{lista.chaveAcesso}" />
+			    </p:column>
+			</p:dataTable>
+        
+        </div>
+        
+    </div>
+    <div id="footer">
+      <p>Copyright &copy; TRE-BA - Tribunal Regional Eleitoral da Bahia</p>
+    </div>
+  </div>
+	
+		   
+</body>
+</h:form>
+</html>	
