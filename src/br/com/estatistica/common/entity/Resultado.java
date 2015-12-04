@@ -86,7 +86,7 @@ public class Resultado implements Serializable {
     private Integer qtdGanhadores11;
 	
 	@Column(name = "resu_tx_local")
-    private Integer localSorteio;
+    private String localSorteio;
 	
 	public Integer getId() {
 		return id;
@@ -176,7 +176,7 @@ public class Resultado implements Serializable {
 		return qtdGanhadores11;
 	}
 
-	public Integer getLocalSorteio() {
+	public String getLocalSorteio() {
 		return localSorteio;
 	}
 
@@ -268,7 +268,7 @@ public class Resultado implements Serializable {
 		this.qtdGanhadores11 = qtdGanhadores11;
 	}
 
-	public void setLocalSorteio(Integer localSorteio) {
+	public void setLocalSorteio(String localSorteio) {
 		this.localSorteio = localSorteio;
 	}
 

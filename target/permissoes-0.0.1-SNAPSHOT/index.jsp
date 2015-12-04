@@ -6,6 +6,6 @@
 <title>SINPA</title>
 </head>
 <body>
-	<jsp:forward page="/pages/manterPerfil.xhtml"/>
+	<jsp:forward page="/pages/manterUsuario.xhtml"/>
 </body>
 </html>
