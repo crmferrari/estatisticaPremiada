@@ -4,7 +4,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-//import br.com.estatistica.business.IManterResultadosService;
+import br.com.estatistica.business.IManterResultadoService;
 import br.com.estatistica.common.entity.Resultado;
 import br.com.estatistica.common.exception.ApplicationException;
 import br.com.estatistica.persistence.ICrudDAO;
@@ -23,7 +23,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class ManterResultadoServiceImpl {//implements IManterResultadosService {
+public class ManterResultadoServiceImpl implements IManterResultadoService {
 
 	
 	private ICrudDAO<Resultado, Integer> resultadoDAO;
@@ -33,7 +33,7 @@ public class ManterResultadoServiceImpl {//implements IManterResultadosService {
 	}	
 	
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public String importarResultados() throws Exception {
+	public Resultado importarResultados() throws Exception {
 		
 		Integer id;	
     	Date dtSorteio;
