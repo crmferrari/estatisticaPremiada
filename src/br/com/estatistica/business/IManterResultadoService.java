@@ -4,6 +4,6 @@ import br.com.estatistica.common.entity.Resultado;
 
 public interface IManterResultadoService {
 	
-	public Resultado salvarResultado(Resultado resultado) throws Exception;	
+	public Resultado importarResultados() throws Exception;	
 	
 }

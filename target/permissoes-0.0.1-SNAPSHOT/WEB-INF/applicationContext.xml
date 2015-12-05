@@ -60,6 +60,17 @@
 		<property name="manterUsuarioCadAdmService" ref="manterUsuarioCadAdmService" />
 	</bean>	
 	
+	<!-- CONFIGURAÇÕES REFERENTES manterResultado -->
+	<bean id="resultadoDAO" class="br.com.estatistica.persistence.hibernate.ResultadoDAO">
+		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
+	</bean>	
+	<bean id="manterResultadoService" class="br.com.estatistica.business.service.ManterResultadoServiceImpl">
+		<property name="resultadoDAO" ref="resultadoDAO" />			
+	</bean>	
+	<bean id="manterResultadoMB" class="br.com.estatistica.presentation.ManterResultadoMB" scope="request">	
+		<property name="manterResultadoService" ref="manterResultadoService" />
+	</bean>	
+	
 	<tx:annotation-driven />
 
 </beans>

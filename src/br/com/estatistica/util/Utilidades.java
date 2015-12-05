@@ -6,6 +6,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.DateFormatConverter;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.apache.poi.ss.usermodel.DateUtil;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,9 +19,10 @@ import java.util.Locale;
 import br.com.estatistica.common.entity.Resultado;
 import br.com.estatistica.common.entity.UsuarioCadAdm;
 import br.com.estatistica.common.exception.ApplicationException;
+import br.com.estatistica.persistence.ICrudDAO;
 
 	public class Utilidades {
-	
+		
 		public static void main(String[] args) throws Exception{
 			Integer id;	
 	    	Date dtSorteio;
@@ -119,15 +123,18 @@ import br.com.estatistica.common.exception.ApplicationException;
 	    			resultado.setQtdGanhadores12(qtdGanhadores12);
 	    			resultado.setQtdGanhadores13(qtdGanhadores13);
 	    			resultado.setQtdGanhadores14(qtdGanhadores14);
-	    			resultado.setQtdGanhadores15(qtdGanhadores15);
+	    			resultado.setQtdGanhadores15(qtdGanhadores15);	    
 	    			
-	    			CONTINUAR DAQUI - SALVAR RESULTADO NO BANCO
-	                
+	    			
+	    				                
 		        }
 		        input_document.close(); //Close the XLS file opened for printing
 			} 
 			catch (Exception e) {
 				throw new ApplicationException(e);
-			}	    
+			}
+			
 		}
+		
+		
 }
