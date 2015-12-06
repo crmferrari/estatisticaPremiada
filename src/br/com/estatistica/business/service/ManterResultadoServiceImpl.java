@@ -69,75 +69,77 @@ public class ManterResultadoServiceImpl implements IManterResultadoService {
                 Iterator<Cell> cellIterator = row.cellIterator();//Read every column for every row that is READ
                 Cell cell = cellIterator.next(); //Fetch CELL
                 id = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                dtSorteio = DateUtil.getJavaDate(cell.getNumericCellValue());
-                cell = cellIterator.next(); //Fetch CELL
-                bola1 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola2 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola3 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola4 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola5 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola6 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola7 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola8 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola9 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola10 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola11 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola12 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola13 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola14 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                bola15 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                qtdGanhadores15 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-                qtdGanhadores14 = (int) cell.getNumericCellValue();
-                cell = cellIterator.next(); //Fetch CELL
-    			qtdGanhadores13 = (int) cell.getNumericCellValue();
-    			cell = cellIterator.next(); //Fetch CELL
-    			qtdGanhadores12 = (int) cell.getNumericCellValue();
-    			cell = cellIterator.next(); //Fetch CELL
-    			qtdGanhadores11 = (int) cell.getNumericCellValue();
-    			
-    			Resultado resultado = new Resultado();
-    			resultado.setId(id);
-    			resultado.setDtSorteio(dtSorteio);
-    			resultado.setBola1(bola1);
-    			resultado.setBola2(bola2);
-    			resultado.setBola3(bola3);
-    			resultado.setBola4(bola4);
-    			resultado.setBola5(bola5);
-    			resultado.setBola6(bola6);
-    			resultado.setBola7(bola7);
-    			resultado.setBola8(bola8);
-    			resultado.setBola9(bola9);
-    			resultado.setBola10(bola10);
-    			resultado.setBola11(bola11);
-    			resultado.setBola12(bola12);
-    			resultado.setBola13(bola13);
-    			resultado.setBola14(bola14);
-    			resultado.setBola15(bola15);
-    			resultado.setQtdGanhadores11(qtdGanhadores11);
-    			resultado.setQtdGanhadores12(qtdGanhadores12);
-    			resultado.setQtdGanhadores13(qtdGanhadores13);
-    			resultado.setQtdGanhadores14(qtdGanhadores14);
-    			resultado.setQtdGanhadores15(qtdGanhadores15);
-    			
-    			this.resultadoDAO.saveOrUpdate(resultado);
-                
+            	if (id != 0){
+	                cell = cellIterator.next(); //Fetch CELL
+	                dtSorteio = DateUtil.getJavaDate(cell.getNumericCellValue());
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola1 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola2 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola3 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola4 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola5 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola6 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola7 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola8 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola9 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola10 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola11 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola12 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola13 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola14 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                bola15 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                qtdGanhadores15 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	                qtdGanhadores14 = (int) cell.getNumericCellValue();
+	                cell = cellIterator.next(); //Fetch CELL
+	    			qtdGanhadores13 = (int) cell.getNumericCellValue();
+	    			cell = cellIterator.next(); //Fetch CELL
+	    			qtdGanhadores12 = (int) cell.getNumericCellValue();
+	    			cell = cellIterator.next(); //Fetch CELL
+	    			qtdGanhadores11 = (int) cell.getNumericCellValue();
+	    			
+	    			Resultado resultado = new Resultado();
+	    			resultado.setId(id);
+	    			resultado.setDtSorteio(dtSorteio);
+	    			resultado.setBola1(bola1);
+	    			resultado.setBola2(bola2);
+	    			resultado.setBola3(bola3);
+	    			resultado.setBola4(bola4);
+	    			resultado.setBola5(bola5);
+	    			resultado.setBola6(bola6);
+	    			resultado.setBola7(bola7);
+	    			resultado.setBola8(bola8);
+	    			resultado.setBola9(bola9);
+	    			resultado.setBola10(bola10);
+	    			resultado.setBola11(bola11);
+	    			resultado.setBola12(bola12);
+	    			resultado.setBola13(bola13);
+	    			resultado.setBola14(bola14);
+	    			resultado.setBola15(bola15);
+	    			resultado.setQtdGanhadores11(qtdGanhadores11);
+	    			resultado.setQtdGanhadores12(qtdGanhadores12);
+	    			resultado.setQtdGanhadores13(qtdGanhadores13);
+	    			resultado.setQtdGanhadores14(qtdGanhadores14);
+	    			resultado.setQtdGanhadores15(qtdGanhadores15);
+	    			
+	    			this.resultadoDAO.saveOrUpdate(resultado);
+	    			
+            	}
 	        }
 	        input_document.close(); //Close the XLS file opened for printing
 		} 

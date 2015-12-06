@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "RESULTADO")
@@ -17,8 +14,6 @@ public class Resultado implements Serializable {
 	private static final long serialVersionUID = 730616230055773783L;
 	
 	@Id
-	@GenericGenerator(name="generator", strategy="increment")
-    @GeneratedValue(generator="generator")
 	@Column(name = "resu_nr_concurso", nullable = false)
     private Integer id;	
 	
