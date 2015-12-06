@@ -50,17 +50,6 @@
 		<property name="sessionFactory" ref="sessionFactoryCadAdm" />
 	</bean>
 	
-	<!-- CONFIGURAÇÕES REFERENTES manterUsuario -->
-	<bean id="usuarioCadAdmDAO" class="br.com.estatistica.persistence.hibernate.UsuarioCadAdmDAO">
-		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
-	</bean>	
-	<bean id="manterUsuarioCadAdmService" class="br.com.estatistica.business.service.ManterUsuarioCadAdmServiceImpl">
-		<property name="usuarioCadAdmDAO" ref="usuarioCadAdmDAO" />			
-	</bean>	
-	<bean id="manterUsuarioMB" class="br.com.estatistica.presentation.ManterUsuarioMB" scope="request">	
-		<property name="manterUsuarioCadAdmService" ref="manterUsuarioCadAdmService" />
-	</bean>	
-	
 	<!-- CONFIGURAÇÕES REFERENTES manterResultado -->
 	<bean id="resultadoDAO" class="br.com.estatistica.persistence.hibernate.ResultadoDAO">
 		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
