@@ -37,8 +37,9 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="current_session_context_class">thread</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
+				<prop key="use_sql_comments">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>				
 				<prop key="transaction.auto_close_session">true</prop>
 			</props>
@@ -48,17 +49,6 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactoryCadAdm" />
 	</bean>
-	
-	<!-- CONFIGURAÇÕES REFERENTES manterUsuario -->
-	<bean id="usuarioCadAdmDAO" class="br.com.estatistica.persistence.hibernate.UsuarioCadAdmDAO">
-		<property name="sessionFactory" ref="sessionFactoryCadAdm" />		
-	</bean>	
-	<bean id="manterUsuarioCadAdmService" class="br.com.estatistica.business.service.ManterUsuarioCadAdmServiceImpl">
-		<property name="usuarioCadAdmDAO" ref="usuarioCadAdmDAO" />			
-	</bean>	
-	<bean id="manterUsuarioMB" class="br.com.estatistica.presentation.ManterUsuarioMB" scope="request">	
-		<property name="manterUsuarioCadAdmService" ref="manterUsuarioCadAdmService" />
-	</bean>	
 	
 	<!-- CONFIGURAÇÕES REFERENTES manterResultado -->
 	<bean id="resultadoDAO" class="br.com.estatistica.persistence.hibernate.ResultadoDAO">
@@ -70,6 +60,11 @@
 	<bean id="manterResultadoMB" class="br.com.estatistica.presentation.ManterResultadoMB" scope="request">	
 		<property name="manterResultadoService" ref="manterResultadoService" />
 	</bean>	
+	
+		<!-- CONFIGURAÇÕES REFERENTES consultaEstatistica -->
+	<bean id="consultaEstatisticaMB" class="br.com.estatistica.presentation.ManterConsultaEstatisticaMB" scope="request">	
+		
+	</bean>
 	
 	<tx:annotation-driven />
 

@@ -6,6 +6,6 @@
 <title>SINPA</title>
 </head>
 <body>
-	<jsp:forward page="/pages/manterResultado.xhtml"/>
+	<jsp:forward page="/pages/consultaEstatistica.xhtml"/>
 </body>
 </html>
