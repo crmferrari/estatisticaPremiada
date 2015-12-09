@@ -66,8 +66,6 @@ public class ConsultaEstatisticaServiceImpl implements IConsultaEstatisticaServi
 			Utilidades qtdRepeticoes = new Utilidades();
 			return qtdRepeticoes.retornaQtdRepeticoes(vetorQtd);
 			
-FAZER INTRERFACE PARA MOSTRAR GRAFICO DE PARETO    CONTINUAR DAQUI			
-			
 		} 
 		catch (Exception e) {
 			throw new ApplicationException(e);

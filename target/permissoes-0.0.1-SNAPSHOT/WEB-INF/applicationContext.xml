@@ -61,9 +61,9 @@
 		<property name="manterResultadoService" ref="manterResultadoService" />
 	</bean>	
 	
-		<!-- CONFIGURAÇÕES REFERENTES consultaEstatistica -->
-	<bean id="consultaEstatisticaMB" class="br.com.estatistica.presentation.ManterConsultaEstatisticaMB" scope="request">	
-		
+	<!-- CONFIGURAÇÕES REFERENTES consultaEstatistica -->
+	<bean id="consultaEstatisticaMB" class="br.com.estatistica.presentation.ConsultaEstatisticaMB" scope="request">	
+		<property name="consultaEstatisticaService" ref="consultaEstatisticaService" />
 	</bean>
 	
 	<tx:annotation-driven />
