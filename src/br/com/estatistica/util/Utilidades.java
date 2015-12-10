@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Utilidades {
 	
 		public Map<Integer, Integer> retornaQtdRepeticoes(int[] vetor){
@@ -116,9 +117,15 @@ public class Utilidades {
 			
 			}
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 	public class Utilidades {
 		
 		public static void main(String[] args) throws Exception{
+<<<<<<< HEAD
+=======
+			
+>>>>>>> refs/remotes/origin/master
 			
 >>>>>>> refs/remotes/origin/master
 			
@@ -161,5 +168,8 @@ public class Utilidades {
 		
 		
 		
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 }
