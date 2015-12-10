@@ -2,6 +2,7 @@ package br.com.estatistica.util;
 import java.util.HashMap;
 import java.util.Map;
 
+<<<<<<< HEAD
 public class Utilidades {
 	
 		public Map<Integer, Integer> retornaQtdRepeticoes(int[] vetor){
@@ -114,6 +115,12 @@ public class Utilidades {
 				}
 			
 			}
+=======
+	public class Utilidades {
+		
+		public static void main(String[] args) throws Exception{
+			
+>>>>>>> refs/remotes/origin/master
 			
 			
 			Map<Integer, Integer> mapaQdtRepeticoes = new HashMap<Integer, Integer>();
@@ -147,5 +154,12 @@ public class Utilidades {
 	        return  mapaQdtRepeticoes;
 	        
 		}
+<<<<<<< HEAD
 
+=======
+		
+		
+		
+		
+>>>>>>> refs/remotes/origin/master
 }
