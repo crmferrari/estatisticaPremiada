@@ -62,9 +62,12 @@
 	</bean>	
 	
 	<!-- CONFIGURAÇÕES REFERENTES consultaEstatistica -->
+	<bean id="consultaEstatisticaService" class="br.com.estatistica.business.service.CconsultaEstatisticaServiceImpl">
+		<property name="resultadoDAO" ref="resultadoDAO" />			
+	</bean>	
 	<bean id="consultaEstatisticaMB" class="br.com.estatistica.presentation.ConsultaEstatisticaMB" scope="request">	
 		<property name="consultaEstatisticaService" ref="consultaEstatisticaService" />
-	</bean>
+	</bean>	
 	
 	<tx:annotation-driven />
 
