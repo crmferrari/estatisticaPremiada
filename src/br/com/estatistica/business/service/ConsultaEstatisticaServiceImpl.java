@@ -18,7 +18,7 @@ public class ConsultaEstatisticaServiceImpl implements IConsultaEstatisticaServi
 	}	
 	
 	@Transactional( readOnly = true )
-	public Map<Integer, Integer> retornaQtdRepeticoes () throws Exception {
+	public int[][] retornaQtdRepeticoes () throws Exception {
 		
 		try{
 			
@@ -63,7 +63,9 @@ public class ConsultaEstatisticaServiceImpl implements IConsultaEstatisticaServi
 			} 
 		
 			Utilidades qtdRepeticoes = new Utilidades();
-			return qtdRepeticoes.retornaQtdRepeticoes(vetorQtd);
+			
+			
+			return qtdRepeticoes.retornaQtdRepOrdenada(qtdRepeticoes.retornaQtdRepeticoes(vetorQtd));
 			
 		} 
 		catch (Exception e) {
