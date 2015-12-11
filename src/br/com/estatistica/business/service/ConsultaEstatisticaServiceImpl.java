@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ConsultaEstatisticaServiceImpl implements IConsultaEstatisticaService {
-
 	
 	private ICrudDAO<Resultado, Integer> resultadoDAO;
 	
