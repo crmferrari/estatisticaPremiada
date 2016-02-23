@@ -1,11 +1,15 @@
 package br.com.estatistica.business.service;
 
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.estatistica.business.IConsultaEstatisticaService;
 import br.com.estatistica.common.entity.Resultado;
 import br.com.estatistica.common.exception.ApplicationException;
 import br.com.estatistica.util.Utilidades;
 import br.com.estatistica.persistence.ICrudDAO;
+import br.com.estatistica.business.query.ConsultasSQL;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +22,20 @@ public class ConsultaEstatisticaServiceImpl implements IConsultaEstatisticaServi
 	}	
 	
 	@Transactional( readOnly = true )
-	public int[][] retornaQtdRepeticoes () throws Exception {
+	public int[][] retornaQtdRepeticoes (String dt1, String dt2) throws Exception {
 		
 		try{
+				
+			List<Resultado> listaResultados = new ArrayList<>();
 			
-			List<Resultado> listaResultados = this.resultadoDAO.listAll();
-	        
+			if (dt1 == null || dt2 == null){
+				listaResultados = this.resultadoDAO.listAll();
+			}
+			else{
+				ConsultasSQL query = new ConsultasSQL();
+				listaResultados = this.resultadoDAO.listBySQLString(query.sqlConsultaResultadosByIntervalo(dt1, dt2));
+			}
+						
 			int size = 0;
 			int[] vetorQtd = new int[listaResultados.size() * 15];
 			

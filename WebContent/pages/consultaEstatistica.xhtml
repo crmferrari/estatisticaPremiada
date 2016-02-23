@@ -42,11 +42,13 @@
         <!-- insert the page content here -->
         <h1>Consultar Estatística</h1>
         	<p>Intervalo dos sorteios</p>
-        	<p:inputText />&nbsp;à&nbsp;<p:inputText />
-        	<p:commandButton value="Consultar" action="#"/> 
+        	<p:inputText value="#{consultaEstatisticaMB.dt1}"/>&nbsp;à&nbsp;<p:inputText value="#{consultaEstatisticaMB.dt2}"/>
+        	 
+        	<p:commandButton value="Consultar" id="ajax" action="#{consultaEstatisticaMB.consultar}" styleClass="ui-priority-primary" update=":form1:bar" ajax="false"/> 
+							
         	<p>&nbsp;</p>
         	<hr/>
-        	<p:chart type="bar" model="#{consultaEstatisticaMB.barModel}" style="height:300px"/>
+        	<p:chart type="bar" id="bar" model="#{consultaEstatisticaMB.barModel}" style="height:300px"/>
         	
         </div>
     </div>
