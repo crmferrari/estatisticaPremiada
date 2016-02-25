@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-  	<title>:: TRE-BA - PERMISSÕES ::</title>
+  	<title>:: Estatística ::</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="website description" />
   	<meta name="keywords" content="website keywords, website keywords" />
@@ -16,10 +16,11 @@
   
 </h:head>
 
-<h:form id="form1">
+
 
 <body id="body_1">
-   
+
+<h:form id="form1">   
 	<div id="main">
     <div id="header">
       <div id="logo">
@@ -42,7 +43,12 @@
         <!-- insert the page content here -->
         <h1>Consultar Estatística</h1>
         	<p>Intervalo dos sorteios</p>
-        	<p:inputText value="#{consultaEstatisticaMB.dt1}"/>&nbsp;à&nbsp;<p:inputText value="#{consultaEstatisticaMB.dt2}"/>
+        	 <!--<p:inputText value="#{consultaEstatisticaMB.dt1}"/>&nbsp;à&nbsp;<p:inputText value="#{consultaEstatisticaMB.dt2}"/>-->
+            <p:message for="popup" />
+            <p:message for="popup2" />    
+            <p:calendar id="popup" value="#{consultaEstatisticaMB.dt_aux_1}" required="true" requiredMessage="A data inicial deve ser preenchida" navigator="true"  />
+
+ 	        <p:calendar id="popup2" value="#{consultaEstatisticaMB.dt_aux_2}" required="true" requiredMessage="A data final deve ser preenchida" navigator="true"  />
         	 
         	<p:commandButton value="Consultar" id="ajax" action="#{consultaEstatisticaMB.consultar}" styleClass="ui-priority-primary" update=":form1:bar" ajax="false"/> 
 							
@@ -56,7 +62,8 @@
       <p>Copyright &copy;</p>
     </div>
   </div>	
-		   
+
+</h:form>		   
 </body>
-</h:form>
+
 </html>	

@@ -66,7 +66,7 @@
 		<property name="resultadoDAO" ref="resultadoDAO" />			
 	</bean>	
 	<bean id="consultaEstatisticaMB" class="br.com.estatistica.presentation.ConsultaEstatisticaMB" scope="request">	
-		<!-- <property name="consultaEstatisticaService" ref="consultaEstatisticaService" /> -->
+		<property name="consultaEstatisticaService" ref="consultaEstatisticaService" />
 	</bean>	
 	
 	<tx:annotation-driven />

@@ -1,11 +1,16 @@
 package br.com.estatistica.presentation;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
 import br.com.estatistica.business.IConsultaEstatisticaService;
 import br.com.estatistica.common.entity.Resultado;
+
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
@@ -19,15 +24,37 @@ public class ConsultaEstatisticaMB {
 	private IConsultaEstatisticaService consultaEstatisticaService;
 	private String dt1;
 	private String dt2;
+	private Date dt_aux_1; //auxiliar para converter Data em String (primefaces)
+	private Date dt_aux_2;
+	
+	
 		
-	public String getDt1() {
+	public Date getDt_aux_1() {
+		return dt_aux_1;
+	}
+
+	public void setDt_aux_1(Date dt_aux_1) {
+		this.dt_aux_1 = dt_aux_1;
+	}
+
+	public Date getDt_aux_2() {
+		return dt_aux_2;
+	}
+
+	public void setDt_aux_2(Date dt_aux_2) {
+		this.dt_aux_2 = dt_aux_2;
+	
+	}
+
+	public String getDt1() {		
 		return dt1;
 	}
 
-	public String getDt2() {
+	public String getDt2() {	
 		return dt2;
 	}
 
+	
 	public void setDt1(String dt1) {
 		this.dt1 = dt1;
 	}
@@ -57,7 +84,9 @@ public class ConsultaEstatisticaMB {
     }
      
 	public String consultar() throws Exception {
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		dt1 = sdf.format(dt_aux_1);
+		dt2 = sdf.format(dt_aux_2);
        this.createBarModel(this.dt1, this.dt2);//this.dt1, this.dt2);
        return null;
     }

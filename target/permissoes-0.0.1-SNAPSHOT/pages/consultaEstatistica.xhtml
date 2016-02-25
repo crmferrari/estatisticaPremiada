@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-  	<title>:: TRE-BA - PERMISSÕES ::</title>
+  	<title>:: Estatística ::</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="website description" />
   	<meta name="keywords" content="website keywords, website keywords" />
@@ -29,11 +29,11 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
-          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterSistema.xhtml">Sistema</a></li>
-          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterPerfil.xhtml">Perfil</a></li>
-          <li class="current"><a href="${facesContext.externalContext.request.contextPath}/pages/manterUsuario.xhtml">Usuário</a></li>
-          <li><a href="${facesContext.externalContext.request.contextPath}/pages/another_page.html">Perfil x Usuario</a></li>
-          <li><a href="${facesContext.externalContext.request.contextPath}/pages/contact.html">Administração</a></li>
+          <li class="current"><a href="${facesContext.externalContext.request.contextPath}/pages/consultaEstatistica.xhtml">Pereto</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterResultado.xhtml">Carga Resultado</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/manterUsuario.xhtml">...</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/another_page.html">...</a></li>
+          <li><a href="${facesContext.externalContext.request.contextPath}/pages/contact.html">...</a></li>
         </ul>
       </div>
     </div>
@@ -41,16 +41,24 @@
       <div id="content">
         <!-- insert the page content here -->
         <h1>Consultar Estatística</h1>
-        
-        	<p:chart type="bar" model="#{consultaEstatisticaMB.barModel}" style="height:300px"/>
+        	<p>Intervalo dos sorteios</p>
+        	 <!--<p:inputText value="#{consultaEstatisticaMB.dt1}"/>&nbsp;à&nbsp;<p:inputText value="#{consultaEstatisticaMB.dt2}"/>-->
+    
+            <p:calendar id="popup" value="#{consultaEstatisticaMB.dt_aux_1}" />
+ 	        <p:calendar id="popup2" value="#{consultaEstatisticaMB.dt_aux_2}" />
+        	 
+        	<p:commandButton value="Consultar" id="ajax" action="#{consultaEstatisticaMB.consultar}" styleClass="ui-priority-primary" update=":form1:bar" ajax="false"/> 
+							
+        	<p>&nbsp;</p>
+        	<hr/>
+        	<p:chart type="bar" id="bar" model="#{consultaEstatisticaMB.barModel}" style="height:300px"/>
         	
         </div>
     </div>
     <div id="footer">
-      <p>Copyright &copy; TRE-BA - Tribunal Regional Eleitoral da Bahia</p>
+      <p>Copyright &copy;</p>
     </div>
-  </div>
-	
+  </div>	
 		   
 </body>
 </h:form>

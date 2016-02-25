@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SINPA</title>
+<title>Estatística</title>
 </head>
 <body>
 	<jsp:forward page="/pages/consultaEstatistica.xhtml"/>
